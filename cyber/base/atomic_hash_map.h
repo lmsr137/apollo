@@ -1,42 +1,16 @@
-/******************************************************************************
- * Copyright 2018 The Apollo Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *****************************************************************************/
-
-#ifndef CYBER_BASE_ATOMIC_HASH_MAP_H_
-#define CYBER_BASE_ATOMIC_HASH_MAP_H_
-
 #include <atomic>
 #include <cstdint>
 #include <type_traits>
 #include <utility>
-
-namespace apollo {
-namespace cyber {
-namespace base {
-/**
- * @brief A implementation of lock-free fixed size hash map
- *
+namespace apollo {namespace cyber {namespace base {
+/** @brief A implementation of lock-free fixed size hash map无阻塞
  * @tparam K Type of key, must be integral
  * @tparam V Type of value
  * @tparam 128 Size of hash table
  * @tparam 0 Type traits, use for checking types of key & value
  */
 template <typename K, typename V, std::size_t TableSize = 128,
-          typename std::enable_if<std::is_integral<K>::value &&
-                                      (TableSize & (TableSize - 1)) == 0,
-                                  int>::type = 0>
+          typename std::enable_if<std::is_integral<K>::value &&(TableSize & (TableSize - 1)) == 0,int>::type = 0>
 class AtomicHashMap {
  public:
   AtomicHashMap() : capacity_(TableSize), mode_num_(capacity_ - 1) {}
@@ -291,9 +265,4 @@ class AtomicHashMap {
   uint64_t capacity_;
   uint64_t mode_num_;
 };
-
-}  // namespace base
-}  // namespace cyber
-}  // namespace apollo
-
-#endif  // CYBER_BASE_ATOMIC_HASH_MAP_H_
+}}}
