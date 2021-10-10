@@ -1,25 +1,7 @@
-/******************************************************************************
- * Copyright 2018 The Apollo Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *****************************************************************************/
-
 #include "modules/planning/navi_planning.h"
-
 #include <algorithm>
 #include <list>
 #include <map>
-
 #include "cyber/common/file.h"
 #include "cyber/time/clock.h"
 #include "google/protobuf/repeated_field.h"
@@ -36,10 +18,8 @@
 #include "modules/planning/planner/rtk/rtk_replay_planner.h"
 #include "modules/planning/reference_line/reference_line_provider.h"
 #include "modules/planning/traffic_rules/traffic_decider.h"
-
 namespace apollo {
 namespace planning {
-
 using apollo::common::ErrorCode;
 using apollo::common::Status;
 using apollo::common::TrajectoryPoint;
@@ -47,7 +27,6 @@ using apollo::common::VehicleState;
 using apollo::common::VehicleStateProvider;
 using apollo::cyber::Clock;
 using apollo::hdmap::HDMapUtil;
-
 NaviPlanning::~NaviPlanning() {
   last_publishable_trajectory_.reset(nullptr);
   frame_.reset(nullptr);
@@ -56,7 +35,6 @@ NaviPlanning::~NaviPlanning() {
   injector_->history()->Clear();
   injector_->planning_context()->mutable_planning_status()->Clear();
 }
-
 std::string NaviPlanning::Name() const { return "navi_planning"; }
 
 Status NaviPlanning::Init(const PlanningConfig& config) {
