@@ -15,7 +15,6 @@ AtomicHashMap<uint64_t, std::string, 512> GlobalData::node_id_map_;
 AtomicHashMap<uint64_t, std::string, 256> GlobalData::channel_id_map_;
 AtomicHashMap<uint64_t, std::string, 256> GlobalData::service_id_map_;
 AtomicHashMap<uint64_t, std::string, 256> GlobalData::task_id_map_;
-
 namespace {
 const std::string& kEmptyString = "";
 std::string program_path() {
@@ -27,7 +26,7 @@ std::string program_path() {
   path[len] = '\0';
   return std::string(path);
 }
-}  // namespace
+}
 
 GlobalData::GlobalData() {
   InitHostInfo();
@@ -74,7 +73,7 @@ void GlobalData::EnableSimulationMode() {
 
 void GlobalData::DisableSimulationMode() { run_mode_ = RunMode::MODE_REALITY; }
 
-bool GlobalData::IsRealityMode() const {
+bool GlobalData::IsRealityMode() const{
   return run_mode_ == RunMode::MODE_REALITY;
 }
 
@@ -234,8 +233,4 @@ std::string GlobalData::GetTaskNameById(uint64_t id) {
     return *task_name;
   }
   return kEmptyString;
-}
-
-}  // namespace common
-}  // namespace cyber
-}  // namespace apollo
+}}}}
