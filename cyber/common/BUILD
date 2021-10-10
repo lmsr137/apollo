@@ -1,8 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//tools:cpplint.bzl", "cpplint")
-
 package(default_visibility = ["//visibility:public"])
-
 cc_library(
     name = "common",
     deps = [
@@ -16,7 +14,6 @@ cc_library(
         "//cyber/common:util",
     ],
 )
-
 cc_library(
     name = "file",
     srcs = ["file.cc"],
@@ -26,7 +23,6 @@ cc_library(
         "@com_google_protobuf//:protobuf",
     ],
 )
-
 cc_test(
     name = "file_test",
     size = "small",
@@ -37,7 +33,6 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
-
 cc_library(
     name = "log",
     hdrs = ["log.h"],
@@ -46,7 +41,6 @@ cc_library(
         "@com_google_glog//:glog",
     ],
 )
-
 cc_test(
     name = "log_test",
     size = "small",
@@ -56,7 +50,6 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
-
 cc_library(
     name = "environment",
     hdrs = ["environment.h"],
@@ -64,7 +57,6 @@ cc_library(
         "//cyber/common:log",
     ],
 )
-
 cc_test(
     name = "environment_test",
     size = "small",
@@ -74,7 +66,6 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
-
 cc_library(
     name = "global_data",
     srcs = ["global_data.cc"],
@@ -92,7 +83,6 @@ cc_library(
         "//cyber/proto:cyber_conf_cc_proto",
     ],
 )
-
 cc_test(
     name = "macros_test",
     size = "small",
@@ -102,7 +92,6 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
-
 cc_library(
     name = "macros",
     hdrs = ["macros.h"],
@@ -110,20 +99,16 @@ cc_library(
         "//cyber/base:macros",
     ],
 )
-
 cc_library(
     name = "time_conversion",
     hdrs = ["time_conversion.h"],
 )
-
 cc_library(
     name = "types",
     hdrs = ["types.h"],
 )
-
 cc_library(
     name = "util",
     hdrs = ["util.h"],
 )
-
 cpplint()

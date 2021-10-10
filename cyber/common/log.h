@@ -5,23 +5,18 @@
 #include "cyber/binary.h"
 #define LEFT_BRACKET "["
 #define RIGHT_BRACKET "]"
-
 #ifndef MODULE_NAME
 #define MODULE_NAME apollo::cyber::binary::GetName().c_str()
 #endif
-
-#define ADEBUG_MODULE(module) \
-  VLOG(4) << LEFT_BRACKET << module << RIGHT_BRACKET << "[DEBUG] "
+#define ADEBUG_MODULE(module) VLOG(4) << LEFT_BRACKET << module << RIGHT_BRACKET << "[DEBUG] "
 #define ADEBUG ADEBUG_MODULE(MODULE_NAME)
 #define AINFO ALOG_MODULE(MODULE_NAME, INFO)
 #define AWARN ALOG_MODULE(MODULE_NAME, WARN)
 #define AERROR ALOG_MODULE(MODULE_NAME, ERROR)
 #define AFATAL ALOG_MODULE(MODULE_NAME, FATAL)
-
 #ifndef ALOG_MODULE_STREAM
 #define ALOG_MODULE_STREAM(log_severity) ALOG_MODULE_STREAM_##log_severity
 #endif
-
 #ifndef ALOG_MODULE
 #define ALOG_MODULE(module, log_severity) \
   ALOG_MODULE_STREAM(log_severity)(module)
