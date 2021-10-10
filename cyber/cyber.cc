@@ -11,7 +11,6 @@ std::unique_ptr<Node> CreateNode(const std::string& node_name,
                                  const std::string& name_space) {
   bool is_reality_mode = GlobalData::Instance()->IsRealityMode();
   if (is_reality_mode && !OK()) {
-    // add some hint log
     AERROR << "please initialize cyber firstly.";
     return nullptr;
   }

@@ -3,5 +3,4 @@
 namespace apollo {
 namespace cyber {
 bool Init(const char* binary_name);
-void Clear();
-}}
+void Clear();}}
